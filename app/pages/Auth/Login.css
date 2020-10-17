@@ -1,0 +1,17 @@
+.container {
+  height: 100vh;
+  background: #2f332f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wapper_login_form {
+  background-color: #615d5d;
+  padding: 2rem;
+  height: 450px;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
