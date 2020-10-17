@@ -5,6 +5,9 @@ import routes from './constants/routes.json';
 import App from './containers/App';
 import HomePage from './containers/HomePage';
 import Login from './pages/Auth/Login';
+import Dashboard from './pages/Dashboard';
+import Customers from './pages/Customers/Customers';
+import Enquiry from './pages/Enquiry/Enquiry';
 
 // Lazily load routes and code split with webpack
 const LazyCounterPage = React.lazy(() =>
@@ -23,6 +26,9 @@ export default function Routes() {
       <Switch>
         <Route path={routes.COUNTER} component={CounterPage} />
         <Route path={routes.LOGIN} exact component={Login} />
+        <Route path={routes.DASHBOARD} exact component={Dashboard} />
+        <Route path={routes.CUSTOMERS} exact component={Customers} />
+        <Route path={routes.ENQUIRY} exact component={Enquiry} />
         <Route path={routes.HOME} component={HomePage} />
       </Switch>
     </App>

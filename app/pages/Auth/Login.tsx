@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { Link } from 'react-router-dom';
+import routes from '../../constants/routes.json';
 import styles from './Login.css';
 
 const Login = (): JSX.Element => {
@@ -32,7 +33,7 @@ const Login = (): JSX.Element => {
           </Form.Item>
         </Form>
       </div>
-      <Link to="/">Home</Link>
+      <Link to={routes.DASHBOARD}>Go to dashboard</Link>
     </div>
   );
 };
