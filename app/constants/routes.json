@@ -3,6 +3,6 @@
   "COUNTER": "/counter",
   "LOGIN": "/login",
   "DASHBOARD": "/dashboard",
-  "CUSTOMERS": "/customers",
+  "CUSTOMERS": "/customers/:slug",
   "ENQUIRY": "/enquiry"
 }
