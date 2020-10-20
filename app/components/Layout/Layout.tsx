@@ -52,7 +52,12 @@ const LayoutSidebar = memo(
               <Menu.Item key="3" onClick={() => history.push('/customers/add')}>
                 Add
               </Menu.Item>
-              <Menu.Item key="4">View</Menu.Item>
+              <Menu.Item
+                key="4"
+                onClick={() => history.push('/customers/view')}
+              >
+                View
+              </Menu.Item>
             </Menu.SubMenu>
             <Menu.SubMenu key="enquiry" icon={<UserOutlined />} title="Enquiry">
               <Menu.Item key="5" onClick={() => history.push('/enquiry/add')}>
