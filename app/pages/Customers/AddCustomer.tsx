@@ -1,100 +1,125 @@
+/* eslint-disable no-template-curly-in-string */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, InputNumber, Button, Select } from 'antd';
 import LayoutSidebar from '../../components/Layout/Layout';
 
 const { Option } = Select;
 
 const layout = {
-  labelCol: { span: 8 },
+  labelCol: { span: 5 },
   wrapperCol: { span: 16 },
 };
-const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+
+const validateMessages = {
+  required: '${label} is required!',
+  types: {
+    email: '${label} is not validate email!',
+    number: '${label} is not a validate number!',
+  },
+  number: {
+    range: '${label} must be between ${min} and ${max}',
+  },
 };
 
 // interface Props { }
 
 const AddCustomer = () => {
-  const [form] = Form.useForm();
-
-  const onGenderChange = (value: string) => {
-    switch (value) {
-      case 'male':
-        form.setFieldsValue({ note: 'Hi, man!' });
-        return;
-      case 'female':
-        form.setFieldsValue({ note: 'Hi, lady!' });
-        return;
-      case 'other':
-        form.setFieldsValue({ note: 'Hi there!' });
-
-      // eslint-disable-next-line no-fallthrough
-      default:
-    }
-  };
-
   const onFinish = (values: void) => {
     console.log(values);
   };
 
-  const onReset = () => {
-    form.resetFields();
-  };
-
-  const onFill = () => {
-    form.setFieldsValue({
-      note: 'Hello world!',
-      gender: 'male',
-    });
-  };
+  const prefixSelector = (
+    <Form.Item name="prefix" noStyle>
+      <Select style={{ width: 70 }}>
+        <Option value="+977">+977</Option>
+        <Option value="091">091</Option>
+      </Select>
+    </Form.Item>
+  );
 
   return (
     <LayoutSidebar>
-      <Form {...layout} form={form} name="control-hooks" onFinish={onFinish}>
-        <Form.Item name="note" label="Note" rules={[{ required: true }]}>
+      <Form
+        {...layout}
+        name="nest-messages"
+        onFinish={onFinish}
+        validateMessages={validateMessages}
+      >
+        <Form.Item
+          name={['user', 'fname']}
+          label="First Name"
+          rules={[{ required: true }]}
+        >
           <Input />
         </Form.Item>
-        <Form.Item name="gender" label="Gender" rules={[{ required: true }]}>
-          <Select
-            placeholder="Select a option and change input text above"
-            onChange={onGenderChange}
-            allowClear
-          >
+        <Form.Item
+          name={['user', 'lname']}
+          label="Last Name"
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name={['user', 'email']}
+          label="Email"
+          rules={[{ type: 'email', required: true }]}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name={['user', 'password']}
+          label="Password"
+          rules={[{ required: true }]}
+        >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item
+          name={['user', 'age']}
+          label="Age"
+          rules={[{ type: 'number', min: 0, max: 99 }]}
+        >
+          <InputNumber />
+        </Form.Item>
+        <Form.Item
+          name="phone"
+          label="Phone Number"
+          rules={[
+            { required: true, message: 'Please input your phone number!' },
+          ]}
+        >
+          <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
+        </Form.Item>
+
+        <Form.Item
+          name={['user', 'gender']}
+          label="Gender"
+          rules={[{ required: true }]}
+        >
+          <Select placeholder="Select an option" allowClear>
             <Option value="male">male</Option>
             <Option value="female">female</Option>
             <Option value="other">other</Option>
           </Select>
         </Form.Item>
+
         <Form.Item
-          noStyle
-          shouldUpdate={
-            (prevValues, currentValues) =>
-              prevValues.gender !== currentValues.gender
-            // eslint-disable-next-line react/jsx-curly-newline
-          }
+          name={['user', 'shift']}
+          label="Shift"
+          rules={[{ required: true }]}
         >
-          {({ getFieldValue }) => {
-            return getFieldValue('gender') === 'other' ? (
-              <Form.Item
-                name="customizeGender"
-                label="Customize Gender"
-                rules={[{ required: true }]}
-              >
-                <Input />
-              </Form.Item>
-            ) : null;
-          }}
+          <Select placeholder="Select an option" allowClear>
+            <Option value="morning">Morning</Option>
+            <Option value="afternoon">Afternoon</Option>
+            <Option value="evening">Evening</Option>
+          </Select>
         </Form.Item>
-        <Form.Item {...tailLayout}>
+        <Form.Item name={['user', 'remarks']} label="Remarks">
+          <Input.TextArea />
+        </Form.Item>
+        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
           <Button type="primary" htmlType="submit">
             Submit
-          </Button>
-          <Button htmlType="button" onClick={onReset}>
-            Reset
-          </Button>
-          <Button type="link" htmlType="button" onClick={onFill}>
-            Fill form
           </Button>
         </Form.Item>
       </Form>
