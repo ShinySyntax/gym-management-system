@@ -67,7 +67,13 @@ const LayoutSidebar = memo(
             className={styles.site_layout_background}
             style={{ padding: 0 }}
           />
-          <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
+          <Content
+            style={{
+              margin: '24px 16px 0',
+              overflow: 'scroll',
+              maxHeight: '80vh',
+            }}
+          >
             <div
               className="site-layout-background"
               style={{ padding: 24, textAlign: 'center' }}
