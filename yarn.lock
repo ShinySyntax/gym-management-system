@@ -3648,6 +3648,11 @@ big.js@^5.2.2:
   resolved "https://registry.yarnpkg.com/big.js/-/big.js-5.2.2.tgz#65f0af382f578bcdc742bd9c281e9cb2d7768328"
   integrity sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==
 
+bikram-sambat-js@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/bikram-sambat-js/-/bikram-sambat-js-1.0.1.tgz#5299de4613767537a23a6e5a7840bb4292e760c8"
+  integrity sha512-d1hdHN0F2BdlJYzT866/FTHX7G+rsJ5AKggJlch4lU1kL7o6AVnbaeJ9JrEUusRwAM4vQhXmCEtPRRCrdnuPRA==
+
 bin-v8-flags-filter@^1.1.2:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/bin-v8-flags-filter/-/bin-v8-flags-filter-1.2.0.tgz#023fc4ee22999b2b1f6dd1b7253621366841537e"
@@ -9913,6 +9918,19 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+nepali-datepicker-reactjs@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/nepali-datepicker-reactjs/-/nepali-datepicker-reactjs-1.1.4.tgz#f7fba4456a603d5533175cec850ae22ed26d1362"
+  integrity sha512-2P2u/NNd74DhzgA8v4IjlRqhDRupsUBeLcOTXwu+Bi/AX5YIGvufjCvbILlgmUmcHxbCfhYEzLpBLQiPF2NKeg==
+  dependencies:
+    bikram-sambat-js "^1.0.1"
+    nepali-number "^1.0.3"
+
+nepali-number@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/nepali-number/-/nepali-number-1.0.3.tgz#3d0079f77f0a85dfb86f54a0a716fd346a276ff3"
+  integrity sha512-Vb6aMQM/xtE7KiiEhemgDcACxIMaDn18Ub/imWXB6JlhDwc2qVDnGW+sR0gDLPQmyiyk06bkKze1oK88FxWIjw==
 
 nice-try@^1.0.4:
   version "1.0.5"

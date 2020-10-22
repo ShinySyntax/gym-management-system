@@ -1,8 +1,10 @@
 /* eslint-disable no-template-curly-in-string */
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
-import { Form, Input, InputNumber, Button, Select } from 'antd';
+import React, { useState } from 'react';
+import { Form, Input, InputNumber, Button, Select, Radio } from 'antd';
+import { NepaliDatePicker } from 'nepali-datepicker-reactjs';
 import LayoutSidebar from '../../components/Layout/Layout';
+import './calender.css';
 
 const { Option } = Select;
 
@@ -25,12 +27,14 @@ const validateMessages = {
 // interface Props { }
 
 const AddCustomer = () => {
+  const [date, setDate] = useState<string>('');
+
   const onFinish = (values: void) => {
     console.log(values);
   };
 
   const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
+    <Form.Item name={['user', 'prefix']} noStyle>
       <Select style={{ width: 70 }}>
         <Option value="+977">+977</Option>
         <Option value="091">091</Option>
@@ -68,7 +72,7 @@ const AddCustomer = () => {
           <Input />
         </Form.Item>
         <Form.Item
-          name="password"
+          name={['password']}
           label="Password"
           rules={[
             {
@@ -82,7 +86,7 @@ const AddCustomer = () => {
         </Form.Item>
 
         <Form.Item
-          name="confirm"
+          name={['user', 'password']}
           label="Confirm Password"
           dependencies={['password']}
           hasFeedback
@@ -106,6 +110,15 @@ const AddCustomer = () => {
         >
           <Input.Password />
         </Form.Item>
+        <Form.Item name={['user', 'join-date']} label="Join Date">
+          <NepaliDatePicker
+            inputClassName="form-control"
+            className=""
+            value={date}
+            onChange={(value: string) => setDate(value)}
+            options={{ calenderLocale: 'ne', valueLocale: 'en' }}
+          />
+        </Form.Item>
         <Form.Item
           name={['user', 'age']}
           label="Age"
@@ -114,7 +127,7 @@ const AddCustomer = () => {
           <InputNumber />
         </Form.Item>
         <Form.Item
-          name="phone"
+          name={['user', 'phone']}
           label="Phone Number"
           rules={[
             { required: true, message: 'Please input your phone number!' },
@@ -135,16 +148,12 @@ const AddCustomer = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item
-          name={['user', 'shift']}
-          label="Shift"
-          rules={[{ required: true }]}
-        >
-          <Select placeholder="Select an option" allowClear>
-            <Option value="morning">Morning</Option>
-            <Option value="afternoon">Afternoon</Option>
-            <Option value="evening">Evening</Option>
-          </Select>
+        <Form.Item name={['user', 'shift']} label="Shift">
+          <Radio.Group>
+            <Radio value="morning">Morning</Radio>
+            <Radio value="afternoon">Afternoon</Radio>
+            <Radio value="evening">Evening</Radio>
+          </Radio.Group>
         </Form.Item>
         <Form.Item name={['user', 'remarks']} label="Remarks">
           <Input.TextArea />
