@@ -1,10 +1,11 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import routes from '../../constants/routes.json';
 import styles from './Login.css';
 
 const Login = (): JSX.Element => {
+  const history = useHistory();
   return (
     <div className={styles.container}>
       <div className={styles.wapper_login_form}>
@@ -27,13 +28,14 @@ const Login = (): JSX.Element => {
               htmlType="submit"
               className="login-form-button"
               style={{ width: '100%' }}
+              onClick={() => history.push(routes.DASHBOARD)}
             >
               Log in
             </Button>
           </Form.Item>
         </Form>
       </div>
-      <Link to={routes.DASHBOARD}>Go to dashboard</Link>
+      {/* <Link to={routes.DASHBOARD}>Go to dashboard</Link> */}
     </div>
   );
 };
